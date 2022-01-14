@@ -2,8 +2,9 @@ import React from 'react'
 
 export default function StatisticLine(props) {
     return (
-        <div>
-            <p>{props.text}: {props.value} {props.percentage ? '%' : ''}</p>
-        </div>
+        <tr>
+            <td>{props.text}: </td>
+            <td>{props.value} {props.percentage ? '%' : ''}</td>
+        </tr>
     )
 }
