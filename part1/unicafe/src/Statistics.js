@@ -16,7 +16,7 @@ export default function Statistics(props) {
                 <div>
                   <p>positive: {calculatePositiveFeedbackPercentage()} %</p> 
                  </div>
-            : <p>There is not any feedback yet.</p>
+            : <p>No feedback given</p>
             }
         </div>
     )
