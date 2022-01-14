@@ -29,12 +29,23 @@ function App() {
     }
     setVotes(copyVotes);
   }
+
+  const getLargestNumber = (numbers) => {
+    let largestNumber = 0;
+    if (numbers && Object.keys(numbers).length !== 0){
+      largestNumber = Object.keys(numbers).reduce(function(a, b){ return numbers[a] > numbers[b] ? a : b });
+    }
+    return largestNumber;
+  }
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {isNaN(votes[selected]) ? '0' : votes[selected]} votes</p>
       <button onClick={() => vote()}>vote</button>
       <button onClick={() => assignRandomNumberToSelected()}>next anecdote</button>
+      <h1>Anecdote with the most votes</h1>
+      <p>{anecdotes[getLargestNumber(votes)]}</p>
     </div>
   )
 }
