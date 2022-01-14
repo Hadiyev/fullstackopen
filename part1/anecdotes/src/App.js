@@ -13,10 +13,28 @@ function App() {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState({})
+
+  const assignRandomNumberToSelected = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length));
+  }
+
+  const vote = () => {
+    const copyVotes = votes;
+    if (isNaN(copyVotes[selected])) {
+      copyVotes[selected] = 0;
+    }
+    else {
+      copyVotes[selected] +=1;
+    }
+    setVotes(copyVotes);
+  }
   return (
     <div>
       <p>{anecdotes[selected]}</p>
-      <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>next anecdote</button>
+      <p>has {isNaN(votes[selected]) ? '0' : votes[selected]} votes</p>
+      <button onClick={() => vote()}>vote</button>
+      <button onClick={() => assignRandomNumberToSelected()}>next anecdote</button>
     </div>
   )
 }
