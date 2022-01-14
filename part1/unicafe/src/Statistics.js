@@ -12,16 +12,18 @@ export default function Statistics(props) {
     return (
         <div>
             <h2>statistics</h2>
-            <StatisticLine text = 'good' value = {props.numGood}/>
-            <StatisticLine text = 'neutral' value = {props.numNeutral}/>
-            <StatisticLine text = 'bad' value = {props.numBad}/>
-            <StatisticLine text = 'average' value = {calculateAverageFeedback()}/>
-            {(props.numGood + props.numBad + props.numNeutral) !== 0 ? 
-                <div>
-                  <StatisticLine text = 'positive' value = {calculatePositiveFeedbackPercentage()} percentage = {true} />
-                 </div>
-            : <p>No feedback given</p>
-            }
+            <table>
+                <tbody>
+                    <StatisticLine text = 'good' value = {props.numGood}/>
+                    <StatisticLine text = 'neutral' value = {props.numNeutral}/>
+                    <StatisticLine text = 'bad' value = {props.numBad}/>
+                    <StatisticLine text = 'average' value = {calculateAverageFeedback()}/>
+                    {(props.numGood + props.numBad + props.numNeutral) !== 0 ? 
+                        <StatisticLine text = 'positive' value = {calculatePositiveFeedbackPercentage()} percentage = {true} /> : 
+                        <StatisticLine text = 'No feedback given' />
+                    }
+                </tbody>
+            </table>
         </div>
     )
 }
