@@ -1,4 +1,5 @@
 import React from 'react'
+import StatisticLine from './StatisticLine'
 
 export default function Statistics(props) {
     const calculateAverageFeedback = () => {
@@ -7,14 +8,17 @@ export default function Statistics(props) {
 
     const calculatePositiveFeedbackPercentage = () => {
         return props.numGood/(props.numGood + props.numBad + props.numNeutral)*100;
-    
     }
     return (
         <div>
-            <p>average: {calculateAverageFeedback()}</p>
+            <h2>statistics</h2>
+            <StatisticLine text = 'good' value = {props.numGood}/>
+            <StatisticLine text = 'neutral' value = {props.numNeutral}/>
+            <StatisticLine text = 'bad' value = {props.numBad}/>
+            <StatisticLine text = 'average' value = {calculateAverageFeedback()}/>
             {(props.numGood + props.numBad + props.numNeutral) !== 0 ? 
                 <div>
-                  <p>positive: {calculatePositiveFeedbackPercentage()} %</p> 
+                  <StatisticLine text = 'positive' value = {calculatePositiveFeedbackPercentage()} percentage = {true} />
                  </div>
             : <p>No feedback given</p>
             }
