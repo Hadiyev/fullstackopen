@@ -17,10 +17,6 @@ function App() {
       <button onClick={ () => giveFeedback(numGood, setNumGood)}>good</button>
       <button onClick={ () => giveFeedback(numNeutral, setNumNeutral)}>neutral</button>
       <button onClick={ () => giveFeedback(numBad, setNumBad)}>bad</button>
-      <h2>statistics</h2>
-      <p>good: {numGood}</p>
-      <p>neutral: {numNeutral}</p>
-      <p>bad: {numBad}</p>
       <Statistics numGood = {numGood} numNeutral = {numNeutral} numBad = {numBad}/>
     </div>
   );
