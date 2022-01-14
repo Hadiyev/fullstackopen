@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Statistics from './Statistics';
 import './App.css';
 
 function App() {
@@ -8,14 +9,6 @@ function App() {
 
   const giveFeedback = (value, setValue) => {
     setValue(value + 1);
-  }
-
-  const calculateAverageFeedback = () => {
-    return (numGood + numBad + numNeutral)/3;
-  }
-
-  const calculatePositiveFeedbackPercentage = () => {
-    return numGood/(numGood + numBad + numNeutral)*100;
   }
 
   return (
@@ -28,14 +21,7 @@ function App() {
       <p>good: {numGood}</p>
       <p>neutral: {numNeutral}</p>
       <p>bad: {numBad}</p>
-      <p>average: {calculateAverageFeedback()}</p>
-      {(numGood + numNeutral + numBad) !== 0 ? 
-      <div>
-        <p>positive: {calculatePositiveFeedbackPercentage()} %</p> 
-      </div>
-      : <p>There is not any feedback yet.</p>
-      }
-      
+      <Statistics numGood = {numGood} numNeutral = {numNeutral} numBad = {numBad}/>
     </div>
   );
 }
