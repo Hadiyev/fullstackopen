@@ -8,6 +8,11 @@ export default function Course(props) {
             {props.course.parts.map( part => {
                 return <CoursePart key={part.id} part={part} />
             })}
+            <p><b>total of exercises: </b>
+                {props.course.parts.reduce( (total, part) => {
+                    return total + part.exercises
+                }, 0)}
+            </p>
         </div>
     )
 }
